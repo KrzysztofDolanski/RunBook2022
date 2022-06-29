@@ -1,0 +1,17 @@
+insert into road (name, city, length, promoted, genre_id) values ('Biała', 'Malbork', 5, true, 1);
+insert into road (name, city, length, promoted, genre_id) values ('Zielona', 'Gdansk', 6, true, 2);
+insert into road (name, city, length, promoted, genre_id) values ('Czarna', 'Sopot', 8, true, 3);
+insert into road (name, city, length, promoted, genre_id) values ('Pomarańczowa', 'Brzeźno', 6, true, 4);
+insert into road (name, city, length, promoted, genre_id) values ('Tęczowa', 'Lidzbark', 6, true, 1);
+insert into road (name, city, length, promoted, genre_id) values ('Lekka', 'Gdynia', 3, true, 2);
+insert into road (name, city, length, promoted, genre_id) values ('Łatwa', 'Gdańsk', 6, true, 3);
+insert into road (name, city, length, promoted, genre_id) values ('Przyjemna', 'Ustka', 11, true, 4);
+insert into road (name, city, length, promoted, genre_id) values ('Rodzinna', 'Szczecin', 7, true, 1);
+insert into road (name, city, length, promoted, genre_id) values ('Trudna', 'Warszawa', 3, true, 2);
+insert into road (name, city, length, promoted, genre_id) values ('Szara', 'Bydgoszcz', 5, true, 3);
+insert into road (name, city, length, promoted, genre_id) values ('Czerwona', 'Toruń', 2, true, 4);
+insert into road (name, city, length, promoted, genre_id) values ('Ogień', 'Toruń', 213, true, 1);
+insert into road (name, city, length, promoted, genre_id) values ('Wulkan', 'Toruń', 100, true, 2);
+insert into road (name, city, length, promoted, genre_id) values ('Niebo', 'Miastko', 50, true, 1);
+insert into road (name, city, length, promoted, genre_id) values ('Ciśnień', 'Wejherowo', 4, true, 2);
+insert into road (name, city, length, promoted, genre_id) values ('Pazur', 'Piaski', 6, true, 4);

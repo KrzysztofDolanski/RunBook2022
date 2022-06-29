@@ -42,11 +42,11 @@
         </p>
     </header>
     <main class="main-content">
-        <h2 class="list-heading">Proponowane trasy</h2>
-        <p class="list-description">Opis sekcji, przykładowo opis kategorii, albo strony głównej</p>
-        <ul class="road-list">
-            <li class="road-list-item">
-                <a href="#">
+        <h2 class="list-heading" th:text="${heading}">Proponowane trasy</h2>
+        <p class="list-description" th:text="${description}">Opis sekcji, przykładowo opis kategorii, albo strony głównej</p>
+        <ul class="road-list" th:remove="all-but-first">
+            <li class="road-list-item" th:each="road: ${roads}">
+                <a href="#" th:href="@{|/road/${road.id}|}">
                     <img src="../static/img/gb65.png"
                          alt="Nazwa trasy"
                          class="road-list-item-poster">
@@ -54,50 +54,10 @@
                 <div class="road-list-item-card">
                     <div class="road-list-item-content">
                         <h3 class="road-list-item-title">
-                            <a href="#">Nazwa trasy</a>
+                            <a href="#" th:href="@{|/road/${road.id}|}" th:text="${road.name}">Nazwa trasy</a>
                         </h3>
-                        <h4>Miejscowość</h4>
-                        <p>Dłogość trasy</p>
-                    </div>
-                    <div class="road-list-item-rating">
-                        <i class="fas fa-star"></i>
-                        <span>8.7</span>
-                    </div>
-                </div>
-            </li>
-            <li class="road-list-item">
-                <a href="#">
-                    <img src="../static/img/gb65.png"
-                         alt="Nazwa trasy"
-                         class="road-list-item-poster">
-                </a>
-                <div class="road-list-item-card">
-                    <div class="road-list-item-content">
-                        <h3 class="road-list-item-title">
-                            <a href="#">Nazwa trasy</a>
-                        </h3>
-                        <h4>Miejscowość</h4>
-                        <p>Dłogość trasy</p>
-                    </div>
-                    <div class="road-list-item-rating">
-                        <i class="fas fa-star"></i>
-                        <span>8.7</span>
-                    </div>
-                </div>
-            </li>
-            <li class="road-list-item">
-                <a href="#">
-                    <img src="../static/img/gb65.png"
-                         alt="Nazwa trasy"
-                         class="movie-list-item-poster">
-                </a>
-                <div class="road-list-item-card">
-                    <div class="road-list-item-content">
-                        <h3 class="road-list-item-title">
-                            <a href="#">Nazwa trasy</a>
-                        </h3>
-                        <h4>Miejscowość</h4>
-                        <p>Dłogość trasy</p>
+                        <h4 th:text="${road.city}">Miejscowość</h4>
+                        <p th:text="${road.length}">Dłogość trasy</p>
                     </div>
                     <div class="road-list-item-rating">
                         <i class="fas fa-star"></i>

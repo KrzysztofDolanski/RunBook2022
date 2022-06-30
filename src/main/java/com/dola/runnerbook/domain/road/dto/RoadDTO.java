@@ -13,13 +13,18 @@ public class RoadDTO {
     private Genre genre;
     private boolean promoted;
 
-    public RoadDTO(Long id, String name, String city, Integer length, Genre genre, boolean promoted) {
+    private String poster;
+    public RoadDTO() {
+    }
+
+    public RoadDTO(Long id, String name, String city, Integer length, Genre genre, boolean promoted, String poster) {
         this.id = id;
         this.name = name;
         this.city = city;
         this.length = length;
         this.genre = genre;
         this.promoted = promoted;
+        this.poster = poster;
     }
 
     public Long getId() {

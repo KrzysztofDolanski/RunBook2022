@@ -1,6 +1,9 @@
 package com.dola.runnerbook.domain.road;
 
+import com.dola.runnerbook.domain.genre.GenreRepository;
 import com.dola.runnerbook.domain.road.dto.RoadDTO;
+import com.dola.runnerbook.domain.road.dto.RoadSaveDTO;
+import com.dola.runnerbook.domain.warehouse.FileService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -11,10 +14,14 @@ import java.util.Optional;
 public class RoadService {
 
     private final RoadRepository roadRepository;
+    private final GenreRepository genreRepository;
+    private final FileService fileStorageService;
 
     @Autowired
-    public RoadService(RoadRepository roadRepository) {
+    public RoadService(RoadRepository roadRepository, GenreRepository genreRepository, FileService fileStorageService) {
         this.roadRepository = roadRepository;
+        this.genreRepository = genreRepository;
+        this.fileStorageService = fileStorageService;
     }
 
     public List<RoadDTO> findAllPromotedRoads() {
@@ -27,17 +34,26 @@ public class RoadService {
         return roadRepository.findById(id).map(RoadDtoMapper::mapToDTO);
     }
 
-    public List<RoadDTO> findMoviesByGenreName(String genre) {
-        return roadRepository.findAllByGenre_NameIgnoreCase(genre).stream()
-                .map(RoadDtoMapper::mapToDTO)
-                .toList();
-    }
-
     public List<RoadDTO> findRoadsByGenreName(String name) {
         return roadRepository.findAllByGenre_NameIgnoreCase(name)
                 .stream()
                 .map(RoadDtoMapper::mapToDTO)
                 .toList();
+    }
+
+    public void addRoad(RoadSaveDTO roadDTO) {
+        Road road = new Road();
+
+        road.setName(roadDTO.getName());
+        road.setCity(roadDTO.getCity());
+        road.setLength(roadDTO.getLength());
+        road.setPromoted(roadDTO.isPromoted());
+        road.setGenre(genreRepository.findByNameIgnoreCase(roadDTO.getGenre()).orElseThrow());
+        if (roadDTO.getPoster() != null) {
+            String savedFileName = fileStorageService.saveImage(roadDTO.getPoster());
+            road.setPoster(savedFileName);
+        }
+        roadRepository.save(road);
     }
 }
 

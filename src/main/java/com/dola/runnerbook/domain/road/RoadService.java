@@ -5,6 +5,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class RoadService {
@@ -20,6 +21,10 @@ public class RoadService {
         return roadRepository.findAllByPromotedIsTrue().stream()
                 .map(RoadDtoMapper::mapToDTO)
                 .toList();
+    }
+
+    public Optional<RoadDTO> findRoadById(long id) {
+        return roadRepository.findById(id).map(RoadDtoMapper::mapToDTO);
     }
 }
 

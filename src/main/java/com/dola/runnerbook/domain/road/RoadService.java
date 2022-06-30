@@ -26,5 +26,18 @@ public class RoadService {
     public Optional<RoadDTO> findRoadById(long id) {
         return roadRepository.findById(id).map(RoadDtoMapper::mapToDTO);
     }
+
+    public List<RoadDTO> findMoviesByGenreName(String genre) {
+        return roadRepository.findAllByGenre_NameIgnoreCase(genre).stream()
+                .map(RoadDtoMapper::mapToDTO)
+                .toList();
+    }
+
+    public List<RoadDTO> findRoadsByGenreName(String name) {
+        return roadRepository.findAllByGenre_NameIgnoreCase(name)
+                .stream()
+                .map(RoadDtoMapper::mapToDTO)
+                .toList();
+    }
 }
 

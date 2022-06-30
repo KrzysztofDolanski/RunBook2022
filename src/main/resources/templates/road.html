@@ -1,47 +1,14 @@
 <!DOCTYPE html>
-<html lang="pl">
+<html lang="pl"
+      xmlns:th="https://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout}">
 <head>
-    <meta charset="UTF-8">
     <title>Nazwa trasy</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
-          integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g=="
-          crossorigin="anonymous"
-          referrerpolicy="no-referrer"/>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400&display=swap" rel="stylesheet">
-    <script defer src="../static/scripts/common.js"></script>
-    <link rel="stylesheet" href="../static/styles/main.css">
 </head>
 <body>
 <div class="container">
-    <ul class="menu">
-        <li class="menu-logo-container">
-            <a href="#" th:href="@{/}">
-                <i class="fas fa-film logo"></i> MovieClub
-            </a>
-        </li>
-        <li class="menu-toggle">
-            <a href="#"><i id="toggle-icon" class="far fa-plus-square"></i></a>
-        </li>
-        <li class="menu-item">
-            <a href="#">Trasy</a>
-        </li>
-        <li class="menu-item">
-            <a href="#">Top10</a>
-        </li>
-        <li class="menu-item">
-            <a href="#">Zaloguj się</a>
-        </li>
-    </ul>
-    <header class="jumbotron">
-        <h1 class="jumbotron-header">RunBook</h1>
-        <p class="jumbotron-description">
-            Witaj w najlepszej przeglądarce tras biegowych.
-        </p>
-    </header>
-    <main class="main-content">
+    <main class="main-content" layout:fragment="content">
         <section class="road">
             <!-- Podsumowanie -->
             <div class="road-summary">
@@ -50,7 +17,7 @@
                      alt="Nazwa trasy"
                      class="road-summary-cover"
                 />
-                <!-- informacje o filmie -->
+                <!-- informacje o trasie -->
                 <div class="road-summary-info">
                     <h1 class="road-summary-title">Nazwa 1</h1>
                     <p class="road-summary-original-title">Miasto</p>
@@ -93,13 +60,9 @@
         <!-- opis -->
         <section class="road-section">
             <h2 class="road-section-heading">Opis</h2>
-            <p>Znan trasa dla ultra-maratończyków</p>
+            <p>Znana trasa dla ultra-maratończyków</p>
         </section>
     </main>
-
-    <footer class="footer">
-        <p>RunBook 2022 <i class="fas fa-copyright"></i> christopher.dolanski@gmail.com</p>
-    </footer>
 </div>
 </body>
 </html>

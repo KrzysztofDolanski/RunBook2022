@@ -8,14 +8,14 @@
 <body>
 <div class="container">
     <main class="main-content" layout:fragment="content">
-        <h2 class="list-heading" th:text="${heading}">Proponowane trasy</h2>
+        <h2 class="list-heading" th:text="${heading}">Route proposal</h2>
         <p class="list-description" th:text="${description}">Opis sekcji, przykładowo opis kategorii, albo strony
             głównej</p>
         <ul class="road-list" th:remove="all-but-first">
             <li class="road-list-item" th:each="road: ${roads}">
                 <a href="#" th:href="@{|/road/${road.id}|}">
                     <img src="../static/img/gb65.png"
-                         alt="Nazwa trasy"
+                         alt="Route name"
                          class="road-list-item-poster">
                 </a>
                 <div class="road-list-item-card">
@@ -23,8 +23,8 @@
                         <h3 class="road-list-item-title">
                             <a href="#" th:href="@{|/road/${road.id}|}" th:text="${road.name}">Nazwa trasy</a>
                         </h3>
-                        <h4 th:text="${road.city}">Miejscowość</h4>
-                        <p th:text="${road.length}">Dłogość trasy</p>
+                        <h4 th:text="${road.city}">City</h4>
+                        <p th:text="${road.length}">Route length</p>
                     </div>
                     <div class="road-list-item-rating">
                         <i class="fas fa-star"></i>

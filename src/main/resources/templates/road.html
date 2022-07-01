@@ -5,8 +5,8 @@
       layout:decorate="~{layout}">
 <head>
     <meta charset="UTF-8">
-    <!-- Ustawiamy tytuł -->
-    <title th:text="|${road.name} - RunBook|">Road name - RunBook</title>
+    <!-- Ustawiamy nazwę -->
+    <title th:text="|${road.name} - RunBook|">Route name - RunBook</title>
 </head>
 <body>
 <div class="container">
@@ -25,21 +25,20 @@
                 <div class="road-summary-info">
                     <h1 class="road-summary-title">Nazwa 1</h1>
                     <p class="road-summary-original-title">Miasto</p>
-                    <p class="road-summary-item">Długość trasy</p>
-                    <p class="road-summary-item">Gatunek: <a href="#">Ultra</a></p>
+                    <p class="road-summary-item">Route length</p>
+                    <p class="road-summary-item">Route type <a href="#">Ultra</a></p>
                     <p class="road-summary-item">
-                        Padniesz czy nie?
+                        Will you survive?
                     </p>
 
                     <h1 class="road-summary-title" th:text="${road.name}">Name</h1>
                     <p class="road-summary-original-title" th:text="${road.city}">City</p>
-                    <p class="road-summary-item" th:text="|Rok: ${road.length}|">Road length</p>
-                    <!-- Ustawiamy link do strony gatunku filmowego, np. /gatunek/fantasy -->
+                    <p class="road-summary-item" th:text="|Lenght: ${road.length}|">Road length</p>
                     <p class="road-summary-item">Gatunek: <a href="#"
                                                               th:href="@{|/genre/${road.genre}|}"
                                                               th:text="${road.genre}">Ultra</a>
                     </p>
-<!--                    <p class="road-summary-item" th:text="${road.shortDescription}">-->
+                    <p class="road-summary-item" th:text="${road.shortDescription}">
                         Will you survive?
                     </p>
 
@@ -47,14 +46,14 @@
             </div>
             <!-- Ocena -->
             <div class="road-rating-container movie-section">
-                <h2 class="road-section-heading">Ocena</h2>
+                <h2 class="road-section-heading">Opinions</h2>
                 <div>
                     <p class="road-rating-value" th:text="${avgRating}">4.0</p>
-                    <p>Liczba ocen: 134</p>
+                    <p>No of opinions 134</p>
                 </div>
                 <form action="#" class="road-rating-form">
                     <!-- Identyfikator filmu, na który głosujemy-->
-                    <p>Twoja ocena</p>
+                    <p>Your opinion</p>
                     <input type="hidden" name="roadId">
                     <div class="road-rating-buttons">
                         <button class="road-rating-button"><i class="fa-solid fa-star"></i></button>
@@ -64,7 +63,7 @@
                         <button class="road-rating-button"><i class="fa-regular fa-star"></i></button>
                     </div>
                 </form>
-                <p><a href="#">Zaloguj się</a>, aby oddać głos</p>
+                <p><a href="#">Login</a>, for pass voice</p>
             </div>
         </section>
         <!-- trailer -->
@@ -76,8 +75,8 @@
         </section>
         <!-- opis -->
         <section class="road-section">
-            <h2 class="road-section-heading">Opis</h2>
-            <p>Znana trasa dla ultra-maratończyków</p>
+            <h2 class="road-section-heading">Description</h2>
+            <p>A well-known route for ultra-marathon runners</p>
         </section>
     </main>
 </div>

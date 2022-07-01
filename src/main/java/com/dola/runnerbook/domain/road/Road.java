@@ -1,8 +1,11 @@
 package com.dola.runnerbook.domain.road;
 
 import com.dola.runnerbook.domain.genre.Genre;
+import com.dola.runnerbook.domain.rating.Rating;
 
 import javax.persistence.*;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
 public class Road {
@@ -57,6 +60,9 @@ public class Road {
         return genre;
     }
 
+    @OneToMany(mappedBy = "road")
+    private Set<Rating> ratings = new HashSet<>();
+
     public void setGenre(Genre genre) {
         this.genre = genre;
     }
@@ -82,6 +88,15 @@ public class Road {
     }
 
     public void setDescription(String description) {
+
         this.description = description;
+    }
+
+    public Set<Rating> getRatings() {
+        return ratings;
+    }
+
+    public void setRatings(Set<Rating> ratings) {
+        this.ratings = ratings;
     }
 }

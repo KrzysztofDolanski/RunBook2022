@@ -2,6 +2,7 @@ package com.dola.runnerbook.config.security;
 
 import com.dola.runnerbook.domain.user.UserService;
 import com.dola.runnerbook.domain.user.dto.UserCredentialsDTO;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -13,6 +14,7 @@ public class CustomUserDetailsService implements UserDetailsService {
 
     private final UserService userService;
 
+    @Autowired
     public CustomUserDetailsService(UserService userService) {
         this.userService = userService;
     }

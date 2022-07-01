@@ -15,6 +15,7 @@
             <li class="road-list-item" th:each="road: ${roads}">
                 <a href="#" th:href="@{|/road/${road.id}|}">
                     <img src="../static/img/gb65.png"
+                         th:src="${road.poster ne null} ? @{|/img/${road.poster}|} : @{/img/gb65.png}"
                          alt="Route name"
                          class="road-list-item-poster">
                 </a>
@@ -28,7 +29,7 @@
                     </div>
                     <div class="road-list-item-rating">
                         <i class="fas fa-star"></i>
-                        <span>8.7</span>
+                        <span th:if="${road.ratingCount}" th:text="${#numbers.formatDecimal(road.avgRating, 1, 1)}">8.7</span>
                     </div>
                 </div>
             </li>

@@ -2,6 +2,7 @@
 <html lang="pl"
       xmlns:th="https://www.thymeleaf.org"
       xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
       layout:decorate="~{layout}">
 <head>
     <meta charset="UTF-8">
@@ -19,18 +20,9 @@
                      th:src="${road.poster ne null} ? @{|/img/${road.poster}|} : @{/img/gb65.png}"
                      alt="Road name"
                      th:alt="${road.name}"
-                     class="road-summary-cover"
-                />
+                     class="road-summary-cover"/>
                 <!-- informacje o trasie -->
                 <div class="road-summary-info">
-                    <h1 class="road-summary-title">Nazwa 1</h1>
-                    <p class="road-summary-original-title">Miasto</p>
-                    <p class="road-summary-item">Route length</p>
-                    <p class="road-summary-item">Route type <a href="#">Ultra</a></p>
-                    <p class="road-summary-item">
-                        Will you survive?
-                    </p>
-
                     <h1 class="road-summary-title" th:text="${road.name}">Name</h1>
                     <p class="road-summary-original-title" th:text="${road.city}">City</p>
                     <p class="road-summary-item" th:text="|Lenght: ${road.length}|">Road length</p>
@@ -47,23 +39,22 @@
             <!-- Ocena -->
             <div class="road-rating-container movie-section">
                 <h2 class="road-section-heading">Opinions</h2>
-                <div>
-                    <p class="road-rating-value" th:text="${avgRating}">4.0</p>
-                    <p>No of opinions 134</p>
+                <p th:unless="${road.ratingCount}">No yet opined</p>
+                <div th:if="${road.ratingCount}">
+                    <p class="road-rating-value" th:text="${#numbers.formatDecimal(road.avgRating, 1, 1)}">4.0</p>
+                    <p th:text="|No of opinions: ${road.ratingCount}|">Number of opinions 134</p>
                 </div>
-                <form action="#" class="road-rating-form">
+                <form action="#" th:action="@{/rating-road}" method="post" sec:authorize="isAuthenticated()" class="road-rating-form">
                     <!-- Identyfikator filmu, na który głosujemy-->
                     <p>Your opinion</p>
-                    <input type="hidden" name="roadId">
+                    <input type="hidden" name="roadId" th:value="${road.id}">
                     <div class="road-rating-buttons">
-                        <button class="road-rating-button"><i class="fa-solid fa-star"></i></button>
-                        <button class="road-rating-button"><i class="fa-solid fa-star"></i></button>
-                        <button class="road-rating-button"><i class="fa-solid fa-star"></i></button>
-                        <button class="road-rating-button"><i class="fa-solid fa-star"></i></button>
-                        <button class="road-rating-button"><i class="fa-regular fa-star"></i></button>
+                        <button class="road-rating-button" name="rating" th:each="i: ${#numbers.sequence(1,5)}" th:value="${i}">
+                            <i class="fa-star" th:classappend="${i <= userRating ? 'fa-solid' : 'fa-regular'}"></i></button>
                     </div>
                 </form>
-                <p><a href="#">Login</a>, for pass voice</p>
+                <p sec:authorize="!isAuthenticated()">
+                    <a href="#" th:href="@{/login}">Login</a>, for pass voice</p>
             </div>
         </section>
         <!-- trailer -->
@@ -76,7 +67,7 @@
         <!-- opis -->
         <section class="road-section">
             <h2 class="road-section-heading">Description</h2>
-            <p>A well-known route for ultra-marathon runners</p>
+            <p th:text="${road.description}">A well-known route for ultra-marathon runners</p>
         </section>
     </main>
 </div>

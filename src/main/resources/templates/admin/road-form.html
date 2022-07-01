@@ -12,11 +12,11 @@
     <h2 class="list-heading">Add new road</h2>
     <form action="" th:action="@{/admin/add-road}" method="post" enctype="multipart/form-data" class="mc-form" th:object="${road}">
         <label for="title">Name</label>
-        <input type="text" id="title" placeholder="Przykładowy tytuł" th:field="*{name}">
+        <input type="text" id="title" placeholder="Name" th:field="*{name}">
         <label for="originalTitle">City</label>
-        <input type="text" id="originalTitle" placeholder="Example title" th:field="*{city}">
+        <input type="text" id="originalTitle" placeholder="City" th:field="*{city}">
         <label for="releaseYear">Length</label>
-        <input type="number" id="releaseYear" placeholder="2019" th:field="*{length}">
+        <input type="number" id="releaseYear" placeholder="length in kilometers" th:field="*{length}">
         <label for="genre">Genre</label>
         <select id="genre" th:field="*{genre}" required>
             <option value="" hidden>Pick genre</option>

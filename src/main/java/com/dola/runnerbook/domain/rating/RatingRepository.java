@@ -8,5 +8,5 @@ import java.util.Optional;
 @Repository
 public interface RatingRepository extends JpaRepository<Rating, Long> {
 
-    Optional<Rating> findByUser_EmailAndMovie_Id(String userEmail, Long movieId);
+    Optional<Rating> findByUser_EmailAndRoad_Id(String userEmail, Long roadId);
 }

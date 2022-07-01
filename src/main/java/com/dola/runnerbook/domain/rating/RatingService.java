@@ -24,7 +24,7 @@ public class RatingService {
     }
 
     public void addOrUpdateRating(String userEmail, long roadId, int rating) {
-        Rating ratingToSaveOrUpdate = ratingRepository.findByUser_EmailAndMovie_Id(userEmail, roadId)
+        Rating ratingToSaveOrUpdate = ratingRepository.findByUser_EmailAndRoad_Id(userEmail, roadId)
                 .orElseGet(Rating::new);
         User user = userRepository.findByEmail(userEmail).orElseThrow();
         Road road = roadRepository.findById(roadId).orElseThrow();
@@ -35,7 +35,7 @@ public class RatingService {
     }
 
     public Optional<Integer> getUserRatingForMovie(String userEmail, long roadId) {
-        return ratingRepository.findByUser_EmailAndMovie_Id(userEmail, roadId)
+        return ratingRepository.findByUser_EmailAndRoad_Id(userEmail, roadId)
                 .map(Rating::getRating);
     }
 }

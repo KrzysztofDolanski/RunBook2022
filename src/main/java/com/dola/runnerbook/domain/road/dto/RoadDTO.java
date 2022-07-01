@@ -16,6 +16,7 @@ public class RoadDTO {
     private String poster;
 
     private String description;
+    private String shortDescription;
     private double avgRating;
     private int ratingCount;
 
@@ -23,7 +24,17 @@ public class RoadDTO {
     public RoadDTO() {
     }
 
-    public RoadDTO(Long id, String name, String city, Integer length, Genre genre, boolean promoted, String poster, String description, double avgRating, int ratingCount) {
+    public RoadDTO(Long id,
+                   String name,
+                   String city,
+                   Integer length,
+                   Genre genre,
+                   boolean promoted,
+                   String poster,
+                   String description,
+                   String shortDescription,
+                   double avgRating,
+                   int ratingCount) {
         this.id = id;
         this.name = name;
         this.city = city;
@@ -32,6 +43,7 @@ public class RoadDTO {
         this.promoted = promoted;
         this.poster = poster;
         this.description = description;
+        this.shortDescription = shortDescription;
         this.avgRating = avgRating;
         this.ratingCount = ratingCount;
     }
@@ -116,5 +128,12 @@ public class RoadDTO {
         this.ratingCount = ratingCount;
     }
 
+    public String getShortDescription() {
+        return shortDescription;
+    }
+
+    public void setShortDescription(String shortDescription) {
+        this.shortDescription = shortDescription;
+    }
 }
 

@@ -5,6 +5,7 @@ import com.dola.runnerbook.domain.road.dto.RoadDTO;
 import com.dola.runnerbook.domain.road.dto.RoadSaveDTO;
 import com.dola.runnerbook.data_warehouse.FileService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -57,6 +58,14 @@ public class RoadService {
         }
         road.setDescription(roadDTO.getDescription());
         roadRepository.save(road);
+    }
+
+
+    public List<RoadDTO> findTopRoads(int size) {
+        Pageable page = Pageable.ofSize(size);
+        return roadRepository.findTopByRating(page).stream()
+                .map(RoadDtoMapper::mapToDTO)
+                .toList();
     }
 }
 

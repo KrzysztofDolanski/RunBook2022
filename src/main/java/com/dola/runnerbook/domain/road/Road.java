@@ -22,6 +22,7 @@ public class Road {
     private boolean promoted;
 
     private String description;
+    private String shortDescription;
     private String poster;
 
     public Long getId() {
@@ -98,5 +99,13 @@ public class Road {
 
     public void setRatings(Set<Rating> ratings) {
         this.ratings = ratings;
+    }
+
+    public String getShortDescription() {
+        return shortDescription;
+    }
+
+    public void setShortDescription(String shortDescription) {
+        this.shortDescription = shortDescription;
     }
 }

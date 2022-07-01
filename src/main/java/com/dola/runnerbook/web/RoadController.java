@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.server.ResponseStatusException;
 
+import java.util.List;
 import java.util.Optional;
 
 @Controller
@@ -38,4 +39,15 @@ public class RoadController {
         }
         return "road";
     }
+
+
+    @GetMapping("/top10")
+    public String findTop10(Model model) {
+        List<RoadDTO> top10Roads = roadService.findTopRoads(10);
+        model.addAttribute("heading", "Roads TOP10");
+        model.addAttribute("description", "Roads most willingly rated by Users");
+        model.addAttribute("roads", top10Roads);
+        return "road-listing";
+    }
+
 }

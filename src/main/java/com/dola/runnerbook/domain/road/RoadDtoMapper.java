@@ -21,6 +21,7 @@ class RoadDtoMapper {
                 road.isPromoted(),
                 road.getPoster(),
                 road.getDescription(),
+                road.getShortDescription(),
                 avgRating,
                 ratingCount);
 

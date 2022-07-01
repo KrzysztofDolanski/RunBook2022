@@ -3,7 +3,7 @@ package com.dola.runnerbook.domain.road;
 import com.dola.runnerbook.domain.genre.GenreRepository;
 import com.dola.runnerbook.domain.road.dto.RoadDTO;
 import com.dola.runnerbook.domain.road.dto.RoadSaveDTO;
-import com.dola.runnerbook.domain.warehouse.FileService;
+import com.dola.runnerbook.data_warehouse.FileService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -18,7 +18,9 @@ public class RoadService {
     private final FileService fileStorageService;
 
     @Autowired
-    public RoadService(RoadRepository roadRepository, GenreRepository genreRepository, FileService fileStorageService) {
+    public RoadService(RoadRepository roadRepository
+            , GenreRepository genreRepository
+            , FileService fileStorageService) {
         this.roadRepository = roadRepository;
         this.genreRepository = genreRepository;
         this.fileStorageService = fileStorageService;
@@ -53,6 +55,7 @@ public class RoadService {
             String savedFileName = fileStorageService.saveImage(roadDTO.getPoster());
             road.setPoster(savedFileName);
         }
+        road.setDescription(roadDTO.getDescription());
         roadRepository.save(road);
     }
 }

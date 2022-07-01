@@ -1,6 +1,7 @@
-package com.dola.runnerbook.domain.warehouse;
+package com.dola.runnerbook.data_warehouse;
 
 import org.apache.commons.io.FilenameUtils;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
@@ -19,6 +20,7 @@ public class FileService {
     private final String fileStorageLocation;
     private final String imageStorageLocation;
 
+    @Autowired
     public FileService(@Value("${app.storage.location}") String storageLocation) throws FileNotFoundException {
         this.fileStorageLocation = storageLocation + "/files/";
         this.imageStorageLocation = storageLocation + "/img/";

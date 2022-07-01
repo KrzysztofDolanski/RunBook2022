@@ -11,6 +11,9 @@ public class RoadSaveDTO {
     private boolean promoted;
     private MultipartFile poster;
 
+    private String description;
+
+
     public String getName() {
         return name;
     }
@@ -57,5 +60,13 @@ public class RoadSaveDTO {
 
     public void setPoster(MultipartFile poster) {
         this.poster = poster;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
     }
 }

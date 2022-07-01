@@ -25,8 +25,9 @@ public class GenreService {
     }
 
     public List<GenreDTO> findAllGenres() {
-        return genreRepository.findAll().stream()
-                .map(GenreDtoMapper::mapToDto).toList();
+        return StreamSupport.stream(genreRepository.findAll().spliterator(), false)
+                .map(GenreDtoMapper::mapToDto)
+                .toList();
     }
 
 

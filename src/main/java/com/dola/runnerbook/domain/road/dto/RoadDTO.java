@@ -14,10 +14,23 @@ public class RoadDTO {
     private boolean promoted;
 
     private String poster;
+
+    private String description;
+
     public RoadDTO() {
     }
 
-    public RoadDTO(Long id, String name, String city, Integer length, Genre genre, boolean promoted, String poster) {
+    public RoadDTO(Long id, String name, String city, Integer length, boolean promoted, String poster, String description) {
+        this.id = id;
+        this.name = name;
+        this.city = city;
+        this.length = length;
+        this.promoted = promoted;
+        this.poster = poster;
+        this.description = description;
+    }
+
+    public RoadDTO(Long id, String name, String city, Integer length, Genre genre, boolean promoted, String poster, String description) {
         this.id = id;
         this.name = name;
         this.city = city;
@@ -25,6 +38,7 @@ public class RoadDTO {
         this.genre = genre;
         this.promoted = promoted;
         this.poster = poster;
+        this.description = description;
     }
 
     public Long getId() {
@@ -73,6 +87,22 @@ public class RoadDTO {
 
     public void setPromoted(boolean promoted) {
         this.promoted = promoted;
+    }
+
+    public String getPoster() {
+        return poster;
+    }
+
+    public void setPoster(String poster) {
+        this.poster = poster;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
     }
 }
 

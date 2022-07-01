@@ -18,6 +18,7 @@ public class Road {
     private Genre genre;
     private boolean promoted;
 
+    private String description;
     private String poster;
 
     public Long getId() {
@@ -74,5 +75,13 @@ public class Road {
 
     public void setPoster(String poster) {
         this.poster = poster;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
     }
 }

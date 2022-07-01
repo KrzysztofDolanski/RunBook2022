@@ -4,11 +4,13 @@
       xmlns:th="https://www.thymeleaf.org"
       xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
       layout:decorate="~{layout}">
+<meta charset="UTF-8">
 <body>
 <div class="container">
     <main class="main-content" layout:fragment="content">
         <h2 class="list-heading" th:text="${heading}">Proponowane trasy</h2>
-        <p class="list-description" th:text="${description}">Opis sekcji, przykładowo opis kategorii, albo strony głównej</p>
+        <p class="list-description" th:text="${description}">Opis sekcji, przykładowo opis kategorii, albo strony
+            głównej</p>
         <ul class="road-list" th:remove="all-but-first">
             <li class="road-list-item" th:each="road: ${roads}">
                 <a href="#" th:href="@{|/road/${road.id}|}">

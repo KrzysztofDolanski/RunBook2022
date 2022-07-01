@@ -4,7 +4,9 @@
       xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
       layout:decorate="~{layout}">
 <head>
-    <title>Nazwa trasy</title>
+    <meta charset="UTF-8">
+    <!-- Ustawiamy tytuł -->
+    <title th:text="|${road.name} - RunBook|">Road name - RunBook</title>
 </head>
 <body>
 <div class="container">
@@ -14,7 +16,9 @@
             <div class="road-summary">
                 <!-- Plakat -->
                 <img src="../static/img/gb65.png"
-                     alt="Nazwa trasy"
+                     th:src="${road.poster ne null} ? @{|/img/${road.poster}|} : @{/img/gb65.png}"
+                     alt="Road name"
+                     th:alt="${road.name}"
                      class="road-summary-cover"
                 />
                 <!-- informacje o trasie -->
@@ -26,6 +30,19 @@
                     <p class="road-summary-item">
                         Padniesz czy nie?
                     </p>
+
+                    <h1 class="road-summary-title" th:text="${road.name}">Name</h1>
+                    <p class="road-summary-original-title" th:text="${road.city}">City</p>
+                    <p class="road-summary-item" th:text="|Rok: ${road.length}|">Road length</p>
+                    <!-- Ustawiamy link do strony gatunku filmowego, np. /gatunek/fantasy -->
+                    <p class="road-summary-item">Gatunek: <a href="#"
+                                                              th:href="@{|/genre/${road.genre}|}"
+                                                              th:text="${road.genre}">Ultra</a>
+                    </p>
+<!--                    <p class="road-summary-item" th:text="${road.shortDescription}">-->
+                        Will you survive?
+                    </p>
+
                 </div>
             </div>
             <!-- Ocena -->

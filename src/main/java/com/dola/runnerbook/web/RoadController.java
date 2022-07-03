@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.server.ResponseStatusException;
 
+import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 import java.util.Optional;
 
@@ -25,10 +26,15 @@ public class RoadController {
     }
 
     @GetMapping("/road/{id}")
-    public String getRoad(@PathVariable long id, Model model, Authentication authentication) {
+    public String getRoad(@PathVariable long id, Model model, Authentication authentication, HttpServletRequest hsr) {
         RoadDTO road = roadService.findRoadById(id)
                 .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
+
+
+
+        String distanceMapQuery = roadService.createDistanceMapQuery(road, hsr);
         model.addAttribute("road", road);
+        model.addAttribute("distance", distanceMapQuery);
         //Jeżeli użytkownik jest zalogowany
         if (authentication != null) {
             String currentUserEmail = authentication.getName();

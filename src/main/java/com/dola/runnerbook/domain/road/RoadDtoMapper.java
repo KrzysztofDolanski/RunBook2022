@@ -15,7 +15,8 @@ class RoadDtoMapper {
         return new RoadDTO(
                 road.getId(),
                 road.getName(),
-                road.getCity(),
+                road.getCityStart(),
+                road.getCityStop(),
                 road.getLength(),
                 road.getGenre(),
                 road.isPromoted(),

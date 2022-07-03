@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
+import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 import java.util.Optional;
 
@@ -48,7 +49,7 @@ public class RoadService {
         Road road = new Road();
 
         road.setName(roadDTO.getName());
-        road.setCity(roadDTO.getCity());
+        road.setCityStart(roadDTO.getCityStart());
         road.setLength(roadDTO.getLength());
         road.setPromoted(roadDTO.isPromoted());
         road.setGenre(genreRepository.findByNameIgnoreCase(roadDTO.getGenre()).orElseThrow());
@@ -67,5 +68,11 @@ public class RoadService {
                 .map(RoadDtoMapper::mapToDTO)
                 .toList();
     }
+
+    public String createDistanceMapQuery(RoadDTO road, HttpServletRequest hsr) {
+        return null;
+    }
+
+
 }
 

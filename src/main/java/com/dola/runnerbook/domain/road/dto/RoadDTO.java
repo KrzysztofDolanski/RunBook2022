@@ -2,13 +2,11 @@ package com.dola.runnerbook.domain.road.dto;
 
 import com.dola.runnerbook.domain.genre.Genre;
 
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-
 public class RoadDTO {
     private Long id;
     private String name;
-    private String city;
+    private String cityStart;
+    private String cityStop;
     private Integer length;
     private Genre genre;
     private boolean promoted;
@@ -26,7 +24,8 @@ public class RoadDTO {
 
     public RoadDTO(Long id,
                    String name,
-                   String city,
+                   String cityStart,
+                   String cityStop,
                    Integer length,
                    Genre genre,
                    boolean promoted,
@@ -37,7 +36,8 @@ public class RoadDTO {
                    int ratingCount) {
         this.id = id;
         this.name = name;
-        this.city = city;
+        this.cityStart = cityStart;
+        this.cityStop = cityStop;
         this.length = length;
         this.genre = genre;
         this.promoted = promoted;
@@ -64,12 +64,20 @@ public class RoadDTO {
         this.name = name;
     }
 
-    public String getCity() {
-        return city;
+    public String getCityStart() {
+        return cityStart;
     }
 
-    public void setCity(String city) {
-        this.city = city;
+    public String getCityStop() {
+        return cityStop;
+    }
+
+    public void setCityStop(String cityStop) {
+        this.cityStop = cityStop;
+    }
+
+    public void setCityStart(String cityStart) {
+        this.cityStart = cityStart;
     }
 
     public Integer getLength() {

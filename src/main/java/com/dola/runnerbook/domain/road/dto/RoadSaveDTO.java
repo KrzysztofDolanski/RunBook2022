@@ -5,7 +5,8 @@ import org.springframework.web.multipart.MultipartFile;
 public class RoadSaveDTO {
 
     private String name;
-    private String city;
+    private String cityStart;
+    private String cityStop;
     private Integer length;
     private String genre;
     private boolean promoted;
@@ -23,12 +24,20 @@ public class RoadSaveDTO {
         this.name = name;
     }
 
-    public String getCity() {
-        return city;
+    public String getCityStart() {
+        return cityStart;
     }
 
-    public void setCity(String city) {
-        this.city = city;
+    public void setCityStart(String cityStart) {
+        this.cityStart = cityStart;
+    }
+
+    public String getCityStop() {
+        return cityStop;
+    }
+
+    public void setCityStop(String cityStop) {
+        this.cityStop = cityStop;
     }
 
     public Integer getLength() {

@@ -24,7 +24,7 @@
                 <!-- informacje o trasie -->
                 <div class="road-summary-info">
                     <h1 class="road-summary-title" th:text="${road.name}">Name</h1>
-                    <p class="road-summary-original-title" th:text="${road.city}">City</p>
+                    <p class="road-summary-original-title" th:text="${road.cityStart}">City</p>
                     <p class="road-summary-item" th:text="|Lenght: ${road.length}|">Road length</p>
                     <p class="road-summary-item">Gatunek: <a href="#"
                                                               th:href="@{|/genre/${road.genre}|}"

@@ -14,7 +14,8 @@ public class Road {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String name;
-    private String city;
+    private String cityStart;
+    private String cityStop;
     private Integer length;
     @ManyToOne
     @JoinColumn(name = "genre_id", referencedColumnName = "id")
@@ -41,12 +42,20 @@ public class Road {
         this.name = name;
     }
 
-    public String getCity() {
-        return city;
+    public String getCityStart() {
+        return cityStart;
     }
 
-    public void setCity(String city) {
-        this.city = city;
+    public void setCityStart(String city) {
+        this.cityStart = city;
+    }
+
+    public String getCityStop() {
+        return cityStop;
+    }
+
+    public void setCityStop(String cityStop) {
+        this.cityStop = cityStop;
     }
 
     public Integer getLength() {
@@ -108,4 +117,5 @@ public class Road {
     public void setShortDescription(String shortDescription) {
         this.shortDescription = shortDescription;
     }
+
 }

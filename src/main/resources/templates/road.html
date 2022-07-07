@@ -56,6 +56,31 @@
                 <p sec:authorize="!isAuthenticated()">
                     <a href="#" th:href="@{/login}">Login</a>, for pass voice</p>
             </div>
+
+
+<!--            todo get road coordinates from page-->
+            <a th:href="${distance}" target="_blank" th:method="post" >MAP</a>
+
+            <div class="position-relative overflow-hidden p-3 p-md-5 m-md-3 text-center bg-light"
+                 th:action="@{/road/{id}(id = ${road.id})}" th:object="${road}" th:method="get" th:target="blank">
+                <h1 class="display-4 font-weight-normal">Here map will be displayed</h1>
+                <p class="lead font-weight-normal" th:text="${road.getName()}"></p>
+                <p class="lead font-weight-normal" th:text="${road.getDescription()}"></p>
+                <div class="row marketing">
+        <span class="col-lg-6" style="width: 80%; height: 300px; border-radius: 21px 21px 0 0;">
+        <iframe height="250" width="250" style="width: 400px; height: 400px;"
+                th:src="${distance}" allowfullscreen>
+        </iframe>
+<!--    todo -->
+
+      </span>
+                </div>
+                <a class="btn btn-outline-secondary" href="#">Details</a>
+                <div class="product-device box-shadow d-none d-md-block"></div>
+                <div class="product-device product-device-2 box-shadow d-none d-md-block"></div>
+            </div>
+
+
         </section>
         <!-- trailer -->
         <section class="road-trailer-container movie-section">

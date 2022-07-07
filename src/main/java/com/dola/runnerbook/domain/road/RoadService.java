@@ -1,5 +1,6 @@
 package com.dola.runnerbook.domain.road;
 
+import com.dola.runnerbook.config.map.OpenStreetMapService;
 import com.dola.runnerbook.domain.genre.GenreRepository;
 import com.dola.runnerbook.domain.road.dto.RoadDTO;
 import com.dola.runnerbook.domain.road.dto.RoadSaveDTO;
@@ -18,14 +19,15 @@ public class RoadService {
     private final RoadRepository roadRepository;
     private final GenreRepository genreRepository;
     private final FileService fileStorageService;
-
+    private final OpenStreetMapService openStreetMapService;
     @Autowired
     public RoadService(RoadRepository roadRepository
             , GenreRepository genreRepository
-            , FileService fileStorageService) {
+            , FileService fileStorageService, OpenStreetMapService openStreetMapService) {
         this.roadRepository = roadRepository;
         this.genreRepository = genreRepository;
         this.fileStorageService = fileStorageService;
+        this.openStreetMapService = openStreetMapService;
     }
 
     public List<RoadDTO> findAllPromotedRoads() {
@@ -70,7 +72,7 @@ public class RoadService {
     }
 
     public String createDistanceMapQuery(RoadDTO road, HttpServletRequest hsr) {
-        return null;
+        return openStreetMapService.createGoogleMapQuery(road) ;
     }
 
 
